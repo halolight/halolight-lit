@@ -1,0 +1,37 @@
+{
+  "name": "halolight-lit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "基于 Lit + Vite 的 Web Components 中文后台管理系统，具备原生组件化和跨框架能力",
+  "author": "h7ml <h7ml@qq.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halolight/halolight-lit"
+  },
+  "homepage": "https://halolight-lit.h7ml.cn",
+  "bugs": {
+    "url": "https://github.com/halolight/halolight-lit/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^3.3.1",
+    "@lit/router": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "packageManager": "pnpm@10.23.0"
+}
