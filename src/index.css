@@ -71,3 +71,94 @@
     @apply text-primary-500 hover:text-primary-600 transition-colors dark:text-primary-400 dark:hover:text-primary-300;
   }
 }
+
+/* 11 Skin Presets (matching Next.js reference) */
+:root[data-skin='blue'] {
+  --primary-color: oklch(0.623 0.214 259.815);
+  --accent-color: oklch(0.707 0.165 254.624);
+}
+.dark[data-skin='blue'] {
+  --primary-color: oklch(0.707 0.165 254.624);
+  --accent-color: oklch(0.623 0.214 259.815);
+}
+
+:root[data-skin='emerald'] {
+  --primary-color: oklch(0.696 0.17 162.48);
+  --accent-color: oklch(0.777 0.152 181.912);
+}
+.dark[data-skin='emerald'] {
+  --primary-color: oklch(0.777 0.152 181.912);
+  --accent-color: oklch(0.696 0.17 162.48);
+}
+
+:root[data-skin='amber'] {
+  --primary-color: oklch(0.769 0.188 70.08);
+  --accent-color: oklch(0.75 0.183 55.934);
+}
+.dark[data-skin='amber'] {
+  --primary-color: oklch(0.828 0.189 84.429);
+  --accent-color: oklch(0.705 0.213 47.604);
+}
+
+:root[data-skin='violet'] {
+  --primary-color: oklch(0.606 0.25 292.717);
+  --accent-color: oklch(0.702 0.183 293.541);
+}
+.dark[data-skin='violet'] {
+  --primary-color: oklch(0.702 0.183 293.541);
+  --accent-color: oklch(0.606 0.25 292.717);
+}
+
+:root[data-skin='rose'] {
+  --primary-color: oklch(0.645 0.246 16.439);
+  --accent-color: oklch(0.712 0.194 13.428);
+}
+.dark[data-skin='rose'] {
+  --primary-color: oklch(0.712 0.194 13.428);
+  --accent-color: oklch(0.645 0.246 16.439);
+}
+
+:root[data-skin='teal'] {
+  --primary-color: oklch(0.704 0.14 182.503);
+  --accent-color: oklch(0.789 0.154 211.53);
+}
+.dark[data-skin='teal'] {
+  --primary-color: oklch(0.777 0.152 181.912);
+  --accent-color: oklch(0.704 0.14 182.503);
+}
+
+:root[data-skin='slate'] {
+  --primary-color: oklch(0.554 0.046 257.417);
+  --accent-color: oklch(0.707 0.165 254.624);
+}
+.dark[data-skin='slate'] {
+  --primary-color: oklch(0.707 0.165 254.624);
+  --accent-color: oklch(0.554 0.046 257.417);
+}
+
+:root[data-skin='ocean'] {
+  --primary-color: oklch(0.62 0.18 240);
+  --accent-color: oklch(0.78 0.14 200);
+}
+.dark[data-skin='ocean'] {
+  --primary-color: oklch(0.74 0.16 240);
+  --accent-color: oklch(0.69 0.12 200);
+}
+
+:root[data-skin='sunset'] {
+  --primary-color: oklch(0.67 0.19 40);
+  --accent-color: oklch(0.71 0.23 20);
+}
+.dark[data-skin='sunset'] {
+  --primary-color: oklch(0.75 0.21 40);
+  --accent-color: oklch(0.7 0.21 20);
+}
+
+:root[data-skin='aurora'] {
+  --primary-color: oklch(0.68 0.16 150);
+  --accent-color: oklch(0.72 0.18 305);
+}
+.dark[data-skin='aurora'] {
+  --primary-color: oklch(0.72 0.16 150);
+  --accent-color: oklch(0.7 0.19 310);
+}

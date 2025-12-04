@@ -1,10 +1,14 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { authStore } from './stores/auth.ts'
+import { uiSettingsStore } from './stores/ui-settings.ts'
+import { websocket } from './services/websocket.ts'
 import type { AuthState } from './types/index.ts'
 
 // 导入组件
 import './components/layout/app-layout.ts'
+import './components/layout/tab-bar.ts'
+import './components/command-menu.ts'
 import './pages/auth/login-page.ts'
 import './pages/auth/register-page.ts'
 import './pages/auth/forgot-password-page.ts'
@@ -44,15 +48,38 @@ export class AppRoot extends LitElement {
 
   connectedCallback() {
     super.connectedCallback()
+
+    // Initialize UI settings (apply saved skin)
+    uiSettingsStore.getState()
+
+    // Initialize WebSocket connection
+    if (this.authState.isAuthenticated) {
+      websocket.connect()
+    }
+
     this.unsubscribe = authStore.subscribe((state) => {
       this.authState = state
       // 如果已登录且在认证页面，跳转到仪表盘
       if (state.isAuthenticated && this.isAuthRoute()) {
         this.navigate('dashboard')
       }
+      // Connect/disconnect WebSocket based on auth state
+      if (state.isAuthenticated && websocket.status === 'disconnected') {
+        websocket.connect()
+      } else if (!state.isAuthenticated && websocket.status === 'connected') {
+        websocket.close()
+      }
     })
+
     this.handlePopState()
     window.addEventListener('popstate', () => this.handlePopState())
+
+    // Handle custom navigation events
+    window.addEventListener('app:navigate', ((e: CustomEvent) => {
+      const path = e.detail.path
+      this.parseRoute(path)
+      window.history.pushState({}, '', path)
+    }) as EventListener)
   }
 
   disconnectedCallback() {
@@ -177,6 +204,7 @@ export class AppRoot extends LitElement {
 
     // 带布局的页面
     return html`
+      <command-menu></command-menu>
       <app-layout
         .currentRoute=${this.currentRoute}
         @navigate=${this.handleNavigate}

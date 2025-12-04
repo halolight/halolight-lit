@@ -35,6 +35,8 @@ export interface AuthState {
   token: string | null
   isAuthenticated: boolean
   loading: boolean
+  accounts?: User[]
+  activeAccountId?: string | null
 }
 
 // API 响应类型
@@ -98,9 +100,10 @@ export interface Task {
 
 export interface Notification {
   id: string
-  type: 'info' | 'success' | 'warning' | 'error'
+  type: 'info' | 'success' | 'warning' | 'error' | 'system' | 'user' | 'task'
   title: string
-  message: string
+  message?: string
+  content?: string
   read: boolean
   createdAt: string
 }

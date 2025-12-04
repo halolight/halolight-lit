@@ -10,6 +10,8 @@ class AuthStore {
     token: null,
     isAuthenticated: false,
     loading: false,
+    accounts: [],
+    activeAccountId: null,
   }
 
   private listeners: Set<AuthListener> = new Set()
@@ -23,11 +25,14 @@ class AuthStore {
       const token = localStorage.getItem(storageKeys.token)
       const userStr = localStorage.getItem(storageKeys.user)
       if (token && userStr) {
+        const user = JSON.parse(userStr)
         this.state = {
-          user: JSON.parse(userStr),
+          user,
           token,
           isAuthenticated: true,
           loading: false,
+          accounts: [user],
+          activeAccountId: user.id,
         }
       }
     } catch {
@@ -90,6 +95,8 @@ class AuthStore {
         token: 'mock-jwt-token-' + Date.now(),
         isAuthenticated: true,
         loading: false,
+        accounts: [user],
+        activeAccountId: user.id,
       }
       this.saveToStorage()
       this.notify()
@@ -126,6 +133,8 @@ class AuthStore {
       token: 'mock-jwt-token-' + Date.now(),
       isAuthenticated: true,
       loading: false,
+      accounts: [user],
+      activeAccountId: user.id,
     }
     this.saveToStorage()
     this.notify()
@@ -138,8 +147,25 @@ class AuthStore {
       token: null,
       isAuthenticated: false,
       loading: false,
+      accounts: [],
+      activeAccountId: null,
     }
     this.clearStorage()
+    this.notify()
+  }
+
+  switchAccount(accountId: string) {
+    const target = this.state.accounts?.find((acc) => acc.id === accountId)
+    if (!target) return
+
+    this.state = {
+      ...this.state,
+      user: target,
+      token: 'mock-jwt-token-' + Date.now(),
+      activeAccountId: target.id,
+      isAuthenticated: true,
+    }
+    this.saveToStorage()
     this.notify()
   }
 }
