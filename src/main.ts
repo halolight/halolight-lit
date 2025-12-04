@@ -75,11 +75,12 @@ export class AppRoot extends LitElement {
     window.addEventListener('popstate', () => this.handlePopState())
 
     // Handle custom navigation events
-    window.addEventListener('app:navigate', ((e: CustomEvent) => {
-      const path = e.detail.path
+    window.addEventListener('app:navigate', (e: Event) => {
+      const customEvent = e as CustomEvent
+      const path = customEvent.detail.path
       this.parseRoute(path)
       window.history.pushState({}, '', path)
-    }) as EventListener)
+    })
   }
 
   disconnectedCallback() {

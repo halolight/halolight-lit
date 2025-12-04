@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
-import { uiSettingsStore } from '../stores/ui-settings.ts'
-import { authStore } from '../stores/auth.ts'
+import { uiSettingsStore, type SkinPreset } from '../stores/ui-settings.ts'
+import { authStore, type User } from '../stores/auth.ts'
 import { themeStore } from '../stores/theme.ts'
 
 @customElement('command-menu')
@@ -93,7 +93,7 @@ export class CommandMenu extends LitElement {
     super.disconnectedCallback()
   }
 
-  private handleKeydown = (e: KeyboardEvent) => {
+  private handleKeydown = (e: globalThis.KeyboardEvent) => {
     if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
       e.preventDefault()
       this.open = !this.open
@@ -117,8 +117,8 @@ export class CommandMenu extends LitElement {
     this.requestUpdate()
   }
 
-  private setSkin(skin: string) {
-    uiSettingsStore.setSkin(skin as any)
+  private setSkin(skin: SkinPreset) {
+    uiSettingsStore.setSkin(skin)
     this.open = false
     this.requestUpdate()
   }
@@ -163,7 +163,7 @@ export class CommandMenu extends LitElement {
 
           ${auth.accounts && auth.accounts.length > 0 ? html`
             <li><div class="group-title">账号</div></li>
-            ${auth.accounts.map((account: any) => html`
+            ${auth.accounts.map((account: User) => html`
               <li>
                 <button class="item" @click=${() => this.switchAccount(account.id)}>
                   切换为 ${account.name} ${account.id === auth.activeAccountId ? '(当前)' : ''}
@@ -173,7 +173,7 @@ export class CommandMenu extends LitElement {
           ` : null}
 
           <li><div class="group-title">操作</div></li>
-          <li><button class="item" @click=${() => { authStore.logout(); this.open = false; }}>退出登录</button></li>
+          <li><button class="item" @click=${() => { authStore.logout(); this.open = false }}>退出登录</button></li>
         </ul>
       </div>
     `

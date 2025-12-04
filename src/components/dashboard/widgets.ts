@@ -7,7 +7,7 @@ import './task-list.ts'
 
 export const widgetRenderers: Record<
   'chart-bar' | 'chart-pie' | 'recent-users' | 'tasks' | 'calendar',
-  (data: any) => unknown
+  (data: unknown) => unknown
 > = {
   'chart-bar': (data) => html`<chart-card title="销售统计" type="bar" .data=${data}></chart-card>`,
   'chart-pie': (data) => html`<chart-card title="流量占比" type="pie" .data=${data}></chart-card>`,
