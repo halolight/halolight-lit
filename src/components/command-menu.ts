@@ -124,7 +124,7 @@ export class CommandMenu extends LitElement {
   }
 
   private toggleTheme() {
-    const currentTheme = themeStore.getTheme()
+    const currentTheme = themeStore.getState().theme
     themeStore.setTheme(currentTheme === 'dark' ? 'light' : 'dark')
     this.open = false
     this.requestUpdate()

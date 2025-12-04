@@ -5,7 +5,7 @@ export const config = {
   useMock: import.meta.env.VITE_MOCK !== 'false',
 
   // 演示账号配置
-  demoEmail: import.meta.env.VITE_DEMO_EMAIL || 'admin@example.com',
+  demoEmail: import.meta.env.VITE_DEMO_EMAIL || 'admin@halolight.h7ml.cn',
   demoPassword: import.meta.env.VITE_DEMO_PASSWORD || '123456',
   showDemoHint: import.meta.env.VITE_SHOW_DEMO_HINT !== 'false',
 

@@ -49,7 +49,7 @@ src/
 
 ### 演示账户
 
-- **邮箱**: `admin@example.com`
+- **邮箱**: `admin@halolight.h7ml.cn`
 - **密码**: `123456`
 
 ## 🔧 环境变量
@@ -72,7 +72,7 @@ src/
 
 | 变量名 | 说明 | 默认值 |
 |--------|------|--------|
-| `VITE_DEMO_EMAIL` | 演示账户邮箱 | `admin@example.com` |
+| `VITE_DEMO_EMAIL` | 演示账户邮箱 | `admin@halolight.h7ml.cn` |
 | `VITE_DEMO_PASSWORD` | 演示账户密码 | `123456` |
 | `VITE_SHOW_DEMO_HINT` | 显示演示提示 | `true` |
 

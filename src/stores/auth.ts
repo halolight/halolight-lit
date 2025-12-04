@@ -1,6 +1,9 @@
 import type { User, AuthState } from '../types/index.ts'
 import { storageKeys } from '../config/index.ts'
 
+// 重新导出 User 类型供其他模块使用
+export type { User } from '../types/index.ts'
+
 type AuthListener = (state: AuthState) => void
 
 // 简单的认证状态管理
@@ -73,7 +76,7 @@ class AuthStore {
     await new Promise((resolve) => setTimeout(resolve, 600))
 
     // Demo 账户验证
-    const demoEmail = import.meta.env.VITE_DEMO_EMAIL || 'admin@example.com'
+    const demoEmail = import.meta.env.VITE_DEMO_EMAIL || 'admin@halolight.h7ml.cn'
     const demoPassword = import.meta.env.VITE_DEMO_PASSWORD || '123456'
 
     if (email === demoEmail && password === demoPassword) {

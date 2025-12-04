@@ -28,7 +28,7 @@ export const mockApi = {
   // 认证相关
   async login(email: string, password: string): Promise<ApiResponse<{ user: User; token: string } | null>> {
     await delay(600)
-    const demoEmail = import.meta.env.VITE_DEMO_EMAIL || 'admin@example.com'
+    const demoEmail = import.meta.env.VITE_DEMO_EMAIL || 'admin@halolight.h7ml.cn'
     const demoPassword = import.meta.env.VITE_DEMO_PASSWORD || '123456'
 
     if (email === demoEmail && password === demoPassword) {

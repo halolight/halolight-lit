@@ -206,7 +206,7 @@ export class SecurityPage extends LitElement {
       id: '1',
       timestamp: new Date().toISOString(),
       action: '用户登录',
-      user: 'admin@example.com',
+      user: 'admin@halolight.h7ml.cn',
       ip: '192.168.1.100',
       status: 'success',
     },
